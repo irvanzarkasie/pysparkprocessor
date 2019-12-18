@@ -16,27 +16,11 @@ config.read(os.path.join(main_dir, "config/pyspark_wrapper.ini"))
 logger.debug("Configuration loaded from " + os.path.join(main_dir, "config/pyspark_wrapper.ini"))
 
 def load_pyspark():
-  # Prepare os lib to be used to retrieve SPARK_HOME
-  import os
-
-  """
-  # Prepare findspark lib
-  logger.debug("Importing findspark")
-  import findspark
-  logger.debug("findspark imported")
-  """
-
+  
   # Prepare py4j lib
   logger.debug("Importing py4j")
   import py4j
   logger.debug("py4j imported")
-
-  """
-  # Initialize findspark using SPARK_HOME
-  logger.debug("Initializing spark")
-  findspark.init(os.environ['SPARK_HOME'])
-  logger.debug("Spark initialization done")
-  """
 
   # Prepare pyspark lib
   logger.debug("Importing pyspark")
@@ -74,6 +58,7 @@ def create_hive_session(app_name):
   # Return a hive context to the function caller
   hc = HiveContext(sc)
   hc.setConf("hive.metastore.uris", config["HIVE"]["hive.metastore.uris"])
+  hc.setConf("spark.sql.warehouse.dir", config["HIVE"]["spark.sql.warehouse.dir"])
   return hc
 
 # end def
