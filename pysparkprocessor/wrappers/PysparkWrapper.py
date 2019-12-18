@@ -80,3 +80,30 @@ def get_hivecontext(app_name):
   return hive_context
 
 # end def
+
+def init_processor(app_name):
+  # Get current script directory
+  main_dir = os.path.dirname(os.path.abspath(__file__))
+  logger.debug("Executing script in " + main_dir + " directory")
+
+  """
+  # Load config from config file using configparser lib
+  logger.debug("Loading configuration from config file")
+  config = configparser.ConfigParser()
+  config.read(os.path.join(main_dir, "../config/config.ini"))
+  logger.debug("Configuration loaded")
+  """
+
+  # Load pyspark lib
+  logger.debug("Using PysparkWrapper to load pyspark lib")
+  init_pyspark()
+  logger.debug("PysparkWrapper successfully loaded pyspark lib")
+
+  # Initialize HiveContext for sql read/write purpose
+  logger.debug("Using PysparkWrapper to initialize hive context")
+  sql_context = get_hivecontext(app_name)
+  logger.debug("Hive context initialized")
+
+  return sql_context
+
+# end def
