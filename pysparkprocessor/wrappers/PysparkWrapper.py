@@ -58,7 +58,6 @@ def create_hive_session(app_name):
   # Return a hive context to the function caller
   hc = HiveContext(sc)
   hc.setConf("hive.metastore.uris", config["HIVE"]["hive.metastore.uris"])
-  hc.setConf("spark.sql.warehouse.dir", config["HIVE"]["spark.sql.warehouse.dir"])
   return hc
 
 # end def
