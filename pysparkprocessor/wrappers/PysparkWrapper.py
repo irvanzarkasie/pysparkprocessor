@@ -85,17 +85,9 @@ def init_processor(app_name):
   main_dir = os.path.dirname(os.path.abspath(__file__))
   logger.debug("Executing script in " + main_dir + " directory")
 
-  """
-  # Load config from config file using configparser lib
-  logger.debug("Loading configuration from config file")
-  config = configparser.ConfigParser()
-  config.read(os.path.join(main_dir, "../config/config.ini"))
-  logger.debug("Configuration loaded")
-  """
-
   # Load pyspark lib
   logger.debug("Using PysparkWrapper to load pyspark lib")
-  init_pyspark()
+  load_pyspark()
   logger.debug("PysparkWrapper successfully loaded pyspark lib")
 
   # Initialize HiveContext for sql read/write purpose
