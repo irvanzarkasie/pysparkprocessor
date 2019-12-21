@@ -92,7 +92,8 @@ def init_processor(app_name):
 
   # Initialize HiveContext for sql read/write purpose
   logger.debug("Using PysparkWrapper to initialize hive context")
-  sql_context = get_hivecontext(app_name)
+  #sql_context = get_hivecontext(app_name)
+  sql_context = create_session(app_name)
   logger.debug("Hive context initialized")
 
   return sql_context
