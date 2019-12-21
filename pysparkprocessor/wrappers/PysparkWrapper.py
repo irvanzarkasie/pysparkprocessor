@@ -37,7 +37,7 @@ def create_session(app_name):
   
   # Return a spark session to the function caller
   logger.debug("Creating spark session....")
-  return SparkSession.builder.appName(app_name).config("hive.metastore.uris", config["HIVE"]["hive.metastore.uris"]).enableHiveSupport().getOrCreate()
+  return SparkSession.builder.appName(app_name).enableHiveSupport().getOrCreate()
 
 # end def
 
